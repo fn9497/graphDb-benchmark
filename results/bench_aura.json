@@ -1,0 +1,42 @@
+{
+  "platform": "aura",
+  "iterations_per_workload": 20,
+  "advertised_specs": "AuraDB Free: shared vCPU, 1 GB RAM, 8 GB disk cap (entry-level free tier; document actual observed limits in README)",
+  "traversals_ms": {
+    "1_hop": {
+      "50": 55.037699872627854,
+      "95": 56.36186996707693
+    },
+    "2_hop": {
+      "50": 55.78220007009804,
+      "95": 59.56664984114468
+    },
+    "3_hop": {
+      "50": 57.27624997962266,
+      "95": 218.68387006688877
+    }
+  },
+  "lookups_ms": {
+    "point_lookup": {
+      "50": 55.05285004619509,
+      "95": 56.522004993166775
+    },
+    "indexed_lookup": {
+      "50": 55.0647999625653,
+      "95": 60.1580499787815
+    }
+  },
+  "aggregation_ms": {
+    "group_by_out_degree_top100": {
+      "50": 114.51084993313998,
+      "95": 125.7992001366802
+    }
+  },
+  "mixed_workload": {
+    "concurrency": 10,
+    "read_write_mix": "80/20",
+    "duration_seconds": 20,
+    "total_ops": 3510,
+    "queries_per_second": 175.5
+  }
+}

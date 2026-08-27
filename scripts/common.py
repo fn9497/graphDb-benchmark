@@ -2,10 +2,12 @@ import os
 import time
 import statistics
 from contextlib import contextmanager
-
 from dotenv import load_dotenv
-from neo4j import GraphDatabase
+from neo4j import GraphDatabase, TrustAll
 
+load_dotenv()
+
+TRUST_ANY_CERT = os.getenv("TRUST_ANY_CERT", "true").lower() == "true"
 load_dotenv()
 
 PLATFORMS = {
@@ -32,8 +34,6 @@ def get_driver(platform_key: str):
             f"Missing credentials for '{platform_key}'. Fill them in .env (see .env.example)."
         )
     return GraphDatabase.driver(cfg["uri"], auth=(cfg["user"], cfg["password"]))
-
-
 @contextmanager
 def timed():
     start = time.perf_counter()

@@ -51,7 +51,7 @@ def main():
         row = [p]
         for hop in ["1_hop", "2_hop", "3_hop"]:
             d = t.get(hop, {})
-            row.append(f"{fmt(d.get(50))} / {fmt(d.get(95))}")
+            row.append(f"{fmt(d.get('50'))} / {fmt(d.get('95'))}")
         rows.append(row)
     print(tabulate(rows, headers=["Platform", "1-hop", "2-hop", "3-hop"], tablefmt="github"))
 
@@ -61,15 +61,15 @@ def main():
         l = benches.get(p, {}).get("lookups_ms", {})
         point = l.get("point_lookup", {})
         idx = l.get("indexed_lookup", {})
-        rows.append([p, f"{fmt(point.get(50))} / {fmt(point.get(95))}",
-                     f"{fmt(idx.get(50))} / {fmt(idx.get(95))}"])
+        rows.append([p, f"{fmt(point.get('50'))} / {fmt(point.get('95'))}",
+                     f"{fmt(idx.get('50'))} / {fmt(idx.get('95'))}"])
     print(tabulate(rows, headers=["Platform", "Point lookup", "Indexed lookup"], tablefmt="github"))
 
     print("\n## Aggregation (p50 / p95 ms)\n")
     rows = []
     for p in platforms:
         a = benches.get(p, {}).get("aggregation_ms", {}).get("group_by_out_degree_top100", {})
-        rows.append([p, f"{fmt(a.get(50))} / {fmt(a.get(95))}"])
+        rows.append([p, f"{fmt(a.get('50'))} / {fmt(a.get('95'))}"])
     print(tabulate(rows, headers=["Platform", "Group-by top-100"], tablefmt="github"))
 
     print("\n## Mixed Workload\n")

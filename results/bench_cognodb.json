@@ -1,0 +1,42 @@
+{
+  "platform": "cognodb",
+  "iterations_per_workload": 20,
+  "advertised_specs": "Free tier (c0): burstable 0.5 vCPU, 256 MB RAM, 1 GB disk",
+  "traversals_ms": {
+    "1_hop": {
+      "50": 126.635100110434,
+      "95": 128.0141999712214
+    },
+    "2_hop": {
+      "50": 127.57975002750754,
+      "95": 136.79174009012058
+    },
+    "3_hop": {
+      "50": 136.82360004168004,
+      "95": 149.3335951003246
+    }
+  },
+  "lookups_ms": {
+    "point_lookup": {
+      "50": 126.2538000009954,
+      "95": 126.981555018574
+    },
+    "indexed_lookup": {
+      "50": 126.10120011959225,
+      "95": 128.47314501414075
+    }
+  },
+  "aggregation_ms": {
+    "group_by_out_degree_top100": {
+      "50": 707.7897500712425,
+      "95": 828.630625072401
+    }
+  },
+  "mixed_workload": {
+    "concurrency": 10,
+    "read_write_mix": "80/20",
+    "duration_seconds": 20,
+    "total_ops": 1474,
+    "queries_per_second": 73.7
+  }
+}

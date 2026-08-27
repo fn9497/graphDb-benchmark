@@ -31,9 +31,14 @@ MERGE (a)-[:EMAILED]->(b)
 def read_edges():
     with open(DATA_PATH) as f:
         for line in f:
-            src, dst = line.strip().split()
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split()
+            if len(parts) != 2:
+                continue
+            src, dst = parts
             yield int(src), int(dst)
-
 
 def batched(iterable, size):
     batch = []

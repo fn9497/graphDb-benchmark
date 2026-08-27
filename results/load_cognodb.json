@@ -1,0 +1,8 @@
+{
+  "platform": "cognodb",
+  "nodes_loaded": 36692,
+  "relationships_loaded": 367662,
+  "wall_clock_seconds": 70.91,
+  "nodes_per_second": 517.4,
+  "relationships_per_second": 5184.9
+}
