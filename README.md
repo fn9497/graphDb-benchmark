@@ -164,11 +164,25 @@ free-tier console/driver at benchmark time — noted here rather than estimated.
 
 ## 7\. Analysis
 
-*(Fill in after running: which platform was faster on which workload, and why —
-e.g. differences in free-tier CPU throttling, network hop to the region you picked,
-or query-planner differences. If both are literally Neo4j-compatible engines, a
-close result is itself an interesting finding worth stating plainly rather than
-manufacturing a bigger gap.)*
+*On this run, AuraDB Free showed noticeably lower latency across every read workload*
+
+*(roughly 2x faster on traversals and point lookups) and higher mixed-workload*
+
+*throughput (175.5 QPS vs. 73.7 QPS). Ingest throughput followed the same pattern —*
+
+*Aura loaded relationships almost twice as fast as CognoDB. The gap is most visible*
+
+*in raw response time rather than query correctness; both platforms returned*
+
+*consistent results for every workload. A plausible explanation is that CognoDB's*
+
+*free (c0) tier advertises a smaller burstable CPU allocation (0.5 vCPU) than Aura*
+
+*Free's shared vCPU, which would show up first in latency-sensitive traversal and*
+
+*lookup queries under load — this is a hypothesis based on the advertised specs in*
+
+*§2, not something independently verified via a resource monitor.*
 
 ## 8\. Extending to more platforms
 
